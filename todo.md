@@ -1,0 +1,2 @@
+- todo
+	- Dockerfile для api - sudo apt install libpq5

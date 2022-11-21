@@ -1,0 +1,9 @@
+{
+  "files.exclude": {
+    ".obsidian": true,
+    "api": true,
+    "docs": true,
+    "webapp": true,
+    "timescaledb.code-workspace": true
+  }
+}

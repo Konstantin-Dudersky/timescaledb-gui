@@ -1,0 +1,33 @@
+version: '3.8'
+
+name: timescaledb_gui
+
+services:
+  timescaledb:
+    image: timescale/timescaledb-ha:pg${POSTGRES_MAJOR}-latest
+    container_name: timescaledb
+    hostname: timescaledb
+    environment:
+      - POSTGRES_USER=$POSTGRES_USER
+      - POSTGRES_PASSWORD=$POSTGRES_PASSWORD
+    ports:
+      - "5432:5432"
+    volumes:
+      - timescaledb_gui_db:/home/postgres/pgdata/data
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: pgadmin
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=${PGADMIN_EMAIL}
+      - PGADMIN_DEFAULT_PASSWORD=${PGADMIN_PASSWORD}
+    ports:
+      - "8080:80"
+    volumes:
+      - pgadmin_volume:/var/lib/pgadmin
+
+volumes:
+  timescaledb_gui_db:
+    name: timescaledb_gui_db
+  pgadmin_volume:
+    name: pgadmin_volume
