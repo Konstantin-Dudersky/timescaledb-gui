@@ -9,7 +9,6 @@ import psycopg
 from psycopg.rows import class_row
 from pydantic import BaseModel
 
-from . import schemas
 from ..shared.settings import settings_store
 
 settings = settings_store.settings
@@ -71,13 +70,3 @@ class Session(Generic[T]):
         if self.__conn is None:
             return
         await self.__conn.close()
-
-
-async def test1():
-    async with Session[schemas.Hypertable](
-        settings.DATABASE_URL,
-        schemas.Hypertable,
-    ) as session:
-        from .crud import read_hypertables
-
-        print(await read_hypertables(session))

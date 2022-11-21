@@ -26,4 +26,5 @@ multi-line-output-modes = 3
 nested-classes-whitelist = Config
 per-file-ignores =
     api/settings.py:WPS115,
-    api/api/routers/info.py:B008,WPS404
+    api/rest/routers/info.py:B008,WPS404
+    api/rest/routers/hyper_and_chunks.py:B008,WPS404

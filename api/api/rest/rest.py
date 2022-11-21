@@ -3,10 +3,11 @@
 import uvicorn
 from fastapi import FastAPI
 
-from .routers import info
+from .routers import hyper_and_chunks, info
 
 api = FastAPI()
 
+api.include_router(hyper_and_chunks.router)
 api.include_router(info.router)
 
 
